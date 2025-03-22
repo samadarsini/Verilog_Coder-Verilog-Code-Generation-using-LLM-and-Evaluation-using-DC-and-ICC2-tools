@@ -1,0 +1,317 @@
+set top_mod "ring_counter"
+ring_counter
+sh mkdir -p asic
+sh mkdir -p asic/${top_mod}/reports
+# Formality output file used for Formal Verification
+set_svf "asic/${top_mod}/${top_mod}.svf";
+1
+# Set library paths
+set search_path "$search_path /afs/umbc.edu/software/synopsys/design_kits/synopsys_32_22nm/SAED32_EDK/lib/stdcell_rvt/db_ccs/"
+. /umbc/software/synopsys/syn/R-2020.09-SP3/libraries/syn /umbc/software/synopsys/syn/R-2020.09-SP3/dw/syn_ver /umbc/software/synopsys/syn/R-2020.09-SP3/dw/sim_ver /afs/umbc.edu/software/synopsys/design_kits/synopsys_32_22nm/SAED32_EDK/lib/stdcell_rvt/db_ccs/
+set search_path "$search_path /afs/umbc.edu/software/synopsys/design_kits/synopsys_32_22nm/SAED32_EDK/"
+. /umbc/software/synopsys/syn/R-2020.09-SP3/libraries/syn /umbc/software/synopsys/syn/R-2020.09-SP3/dw/syn_ver /umbc/software/synopsys/syn/R-2020.09-SP3/dw/sim_ver /afs/umbc.edu/software/synopsys/design_kits/synopsys_32_22nm/SAED32_EDK/lib/stdcell_rvt/db_ccs/ /afs/umbc.edu/software/synopsys/design_kits/synopsys_32_22nm/SAED32_EDK/
+set search_path "$search_path /afs/umbc.edu/users/w/d/wd70170/home/final_project/ring_counter/GPT3.5"
+. /umbc/software/synopsys/syn/R-2020.09-SP3/libraries/syn /umbc/software/synopsys/syn/R-2020.09-SP3/dw/syn_ver /umbc/software/synopsys/syn/R-2020.09-SP3/dw/sim_ver /afs/umbc.edu/software/synopsys/design_kits/synopsys_32_22nm/SAED32_EDK/lib/stdcell_rvt/db_ccs/ /afs/umbc.edu/software/synopsys/design_kits/synopsys_32_22nm/SAED32_EDK/ /afs/umbc.edu/users/w/d/wd70170/home/final_project/ring_counter/GPT3.5
+set rvt_library " /afs/umbc.edu/software/synopsys/design_kits/synopsys_32_22nm/SAED32_EDK/lib/stdcell_rvt/db_ccs/saed32rvt_tt1p05v25c.db"
+ /afs/umbc.edu/software/synopsys/design_kits/synopsys_32_22nm/SAED32_EDK/lib/stdcell_rvt/db_ccs/saed32rvt_tt1p05v25c.db
+set link_library "$rvt_library"
+ /afs/umbc.edu/software/synopsys/design_kits/synopsys_32_22nm/SAED32_EDK/lib/stdcell_rvt/db_ccs/saed32rvt_tt1p05v25c.db
+set target_library "$rvt_library"
+ /afs/umbc.edu/software/synopsys/design_kits/synopsys_32_22nm/SAED32_EDK/lib/stdcell_rvt/db_ccs/saed32rvt_tt1p05v25c.db
+create_mw_lib "asic/${top_mod}/${top_mod}" -technology /afs/umbc.edu/software/synopsys/design_kits/synopsys_32_22nm/SAED32_EDK/tech/milkyway/saed32nm_1p9m_mw.tf -mw_reference_library { /afs/umbc.edu/software/synopsys/design_kits/synopsys_32_22nm/SAED32_EDK/lib/stdcell_rvt/milkyway/saed32nm_rvt_1p9m }
+Start to load technology file /afs/umbc.edu/software/synopsys/design_kits/synopsys_32_22nm/SAED32_EDK/tech/milkyway/saed32nm_1p9m_mw.tf.
+Warning: Layer 'M1' has a pitch 0.152 that does not match the recommended wire-to-via pitch 0.13 or 0.105. (TFCHK-049)
+Warning: Layer 'M2' has a pitch 0.152 that does not match the recommended wire-to-via pitch 0.139. (TFCHK-049)
+Warning: Layer 'M3' has a pitch 0.304 that does not match the recommended wire-to-via pitch 0.139. (TFCHK-049)
+Warning: Layer 'M4' has a pitch 0.304 that does not match the recommended wire-to-via pitch 0.139. (TFCHK-049)
+Warning: Layer 'M5' has a pitch 0.608 that does not match the recommended wire-to-via pitch 0.139. (TFCHK-049)
+Warning: Layer 'M6' has a pitch 0.608 that does not match the recommended wire-to-via pitch 0.139. (TFCHK-049)
+Warning: Layer 'M7' has a pitch 1.216 that does not match the recommended wire-to-via pitch 0.139. (TFCHK-049)
+Warning: Layer 'M8' has a pitch 1.216 that does not match the recommended wire-to-via pitch 0.179 or 0.164. (TFCHK-049)
+Warning: Layer 'M9' has a pitch 2.432 that does not match the recommended wire-to-via pitch 1.74. (TFCHK-049)
+Warning: Layer 'MRDL' has a pitch 4.864 that does not match the recommended wire-to-via pitch 4.5. (TFCHK-049)
+Warning: Layer 'MRDL' has a pitch 4.864 that does not match the doubled pitch 2.432 or tripled pitch 3.648. (TFCHK-050)
+Warning: CapModel sections are missing. Capacitance models should be loaded with a TLU+ file later. (TFCHK-084)
+Technology file /afs/umbc.edu/software/synopsys/design_kits/synopsys_32_22nm/SAED32_EDK/tech/milkyway/saed32nm_1p9m_mw.tf has been loaded successfully.
+open_mw_lib "asic/${top_mod}/${top_mod}"
+{ring_counter}
+set_host_options -max_cores 10
+Warning: You requested 10 cores. However, the host cadence2.cs.umbc.edu only has 8 available cores. The tool will ignore the request and use -max_cores 8. (UIO-230)
+1
+define_design_lib work -path asic/${top_mod}/work
+1
+analyze -define {ASIC=1} -f sverilog -library work "${top_mod}.v"
+Running PRESTO HDLC
+Compiling source file ./ring_counter.v
+Presto compilation completed successfully.
+Loading db file '/afs/umbc.edu/software/synopsys/design_kits/synopsys_32_22nm/SAED32_EDK/lib/stdcell_rvt/db_ccs/saed32rvt_tt1p05v25c.db'
+Information: Using CCS timing libraries. (TIM-024)
+1
+elaborate -library work ${top_mod}
+Loading db file '/umbc/software/synopsys/syn/R-2020.09-SP3/libraries/syn/gtech.db'
+Loading db file '/umbc/software/synopsys/syn/R-2020.09-SP3/libraries/syn/standard.sldb'
+  Loading link library 'saed32rvt_tt1p05v25c'
+  Loading link library 'gtech'
+Running PRESTO HDLC
+
+Inferred memory devices in process
+        in routine ring_counter line 11 in file
+                './ring_counter.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      state_reg      | Flip-flop |   4   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (ring_counter)
+Elaborated 1 design.
+Current design is now 'ring_counter'.
+1
+create_clock -name clk -period 2.01 clk
+1
+# Adding clock uncertainty constraint
+set_clock_uncertainty 0.1 [get_clocks clk]
+1
+# Adding input, output delay constraint
+set_input_delay 0.1 -clock [get_clocks clk] [all_inputs]; set_output_delay 0.1 -clock [get_clocks clk] [all_outputs]
+1
+compile_ultra
+Loading db file '/umbc/software/synopsys/syn/R-2020.09-SP3/libraries/syn/dw_foundation.sldb'
+Warning: DesignWare synthetic library dw_foundation.sldb is added to the synthetic_library in the current command. (UISN-40)
+Information: Performing power optimization. (PWR-850)
+Analyzing: "/afs/umbc.edu/software/synopsys/design_kits/synopsys_32_22nm/SAED32_EDK/lib/stdcell_rvt/db_ccs/saed32rvt_tt1p05v25c.db"
+Library analysis succeeded.
+Information: Running optimization using a maximum of 8 cores. (OPT-1500)
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | R-2020.09-DWBB_202009.3 |     *     |
+| Licensed DW Building Blocks        | R-2020.09-DWBB_202009.3 |     *     |
+============================================================================
+
+Information: Sequential output inversion is enabled.  SVF file must be used for formal verification. (OPT-1208)
+  Simplifying Design 'ring_counter'
+
+Loaded alib file './alib-52/saed32rvt_tt1p05v25c.db.alib'
+  Building model 'DW01_NAND2'
+Information: Ungrouping 0 of 1 hierarchies before Pass 1 (OPT-775)
+Information: State dependent leakage is now switched from on to off.
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'ring_counter'
+Information: The register 'state_reg[3]' is a constant and will be removed. (OPT-1206)
+Information: The register 'state_reg[0]' is a constant and will be removed. (OPT-1206)
+Information: The register 'state_reg[1]' is a constant and will be removed. (OPT-1206)
+Information: The register 'state_reg[2]' is a constant and will be removed. (OPT-1206)
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+Information: The library cell 'PMT3_RVT' in the library 'saed32rvt_tt1p05v25c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'PMT2_RVT' in the library 'saed32rvt_tt1p05v25c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'PMT1_RVT' in the library 'saed32rvt_tt1p05v25c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT3_RVT' in the library 'saed32rvt_tt1p05v25c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT2_RVT' in the library 'saed32rvt_tt1p05v25c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT1_RVT' in the library 'saed32rvt_tt1p05v25c' is not characterized for internal power. (PWR-536)
+Information: The target library(s) contains cell(s), other than black boxes, that are not characterized for internal power. (PWR-24)
+
+Threshold voltage group cell usage:
+>> saed32cell_svt 0.00%
+
+  Beginning Mapping Optimizations  (Ultra High effort)
+  -------------------------------
+Information: There is no timing violation in design ring_counter. Delay-based auto_ungroup will not be performed. (OPT-780)
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+
+Threshold voltage group cell usage:
+>> saed32cell_svt 0.00%
+
+  Beginning Constant Register Removal
+  -----------------------------------
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+
+Threshold voltage group cell usage:
+>> saed32cell_svt 0.00%
+
+  Beginning Global Optimizations
+  ------------------------------
+  Numerical Synthesis (Phase 1)
+  Numerical Synthesis (Phase 2)
+  Global Optimization (Phase 1)
+  Global Optimization (Phase 2)
+  Global Optimization (Phase 3)
+  Global Optimization (Phase 4)
+  Global Optimization (Phase 5)
+  Global Optimization (Phase 6)
+  Global Optimization (Phase 7)
+  Global Optimization (Phase 8)
+  Global Optimization (Phase 9)
+  Global Optimization (Phase 10)
+  Global Optimization (Phase 11)
+  Global Optimization (Phase 12)
+  Global Optimization (Phase 13)
+  Global Optimization (Phase 14)
+  Global Optimization (Phase 15)
+  Global Optimization (Phase 16)
+  Global Optimization (Phase 17)
+  Global Optimization (Phase 18)
+  Global Optimization (Phase 19)
+  Global Optimization (Phase 20)
+  Global Optimization (Phase 21)
+  Global Optimization (Phase 22)
+  Global Optimization (Phase 23)
+  Global Optimization (Phase 24)
+  Global Optimization (Phase 25)
+  Global Optimization (Phase 26)
+  Global Optimization (Phase 27)
+  Global Optimization (Phase 28)
+
+Threshold voltage group cell usage:
+>> saed32cell_svt 0.00%
+
+  Beginning Isolate Ports
+  -----------------------
+
+Threshold voltage group cell usage:
+>> saed32cell_svt 0.00%
+
+  Beginning Delay Optimization
+  ----------------------------
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+
+Threshold voltage group cell usage:
+>> saed32cell_svt 0.00%
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+
+  Beginning WLM Backend Optimization
+  --------------------------------------
+
+  Beginning Delay Optimization Phase
+  ----------------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+    0:00:01       0.0      0.00       0.0       0.0                              0.0000
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+Information: State dependent leakage is now switched from off to on.
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+1
+#finding capacitance at the output pin
+set dff_load [get_attribute [get_pins FP_R_reg[1]/D] actual_pin_cap_max]
+Warning: Can't find object 'FP_R_reg[1]/D' in design 'ring_counter'. (UID-95)
+#setting four load capacitances for all outputs
+set_load [expr {$dff_load*4} ] [all_outputs]
+Error: can't use empty string as operand of "*"
+        Use error_info for more info. (CMD-013)
+uniquify
+1
+write -hierarchy -format verilog -output asic/${top_mod}/${top_mod}_icc.v ${top_mod}
+Writing verilog file '/afs/umbc.edu/users/w/d/wd70170/home/final_project/ring_counter/GPT3.5/asic/ring_counter/ring_counter_icc.v'.
+Warning: Verilog 'assign' or 'tran' statements are written out. (VO-4)
+1
+write_sdc asic/${top_mod}/${top_mod}.sdc
+1
+change_names -rules verilog -hierarchy
+Warning: In the design ring_counter, net 'out[2]' is connecting multiple ports. (UCN-1)
+1
+write_sdf -significant_digits 13 asic/${top_mod}/${top_mod}.sdf
+Information: Annotated 'cell' delays are assumed to include load delay. (UID-282)
+Information: Writing timing information to file '/afs/umbc.edu/users/w/d/wd70170/home/final_project/ring_counter/GPT3.5/asic/ring_counter/ring_counter.sdf'. (WT-3)
+Information: Updating design information... (UID-85)
+1
+report_constraint -all_violators > asic/${top_mod}/reports/dc_constraint.txt
+report_area > asic/${top_mod}/reports/dc_area.txt
+report_power > asic/${top_mod}/reports/dc_power.txt
+report_timing -delay_type max > asic/${top_mod}/reports/maximum_critical_path.txt
+report_timing -delay_type min > asic/${top_mod}/reports/minimum_critical_path.txt
+quit
+
+Memory usage for this session 260 Mbytes.
+Memory usage for this session including child processes 484 Mbytes.
+CPU usage for this session 61 seconds ( 0.02 hours ).
+Elapsed time for this session 63 seconds ( 0.02 hours ).
+
+Thank you...
+

@@ -1,0 +1,17 @@
+****************************************
+Report : Attribute
+Design : alu
+Version: R-2020.09-SP3
+Date   : Tue May 14 03:24:43 2024
+****************************************
+
+Design          Object          Type        Attribute Name        Value
+--------------------------------------------------------------------------------
+alu             alu             area        area                  430.01164800
+alu             alu             rect        bbox                  {10.0000 10.0000} {31.4320 30.0640}
+alu             alu             coord_list  boundary              {10.0000 10.0000} {10.0000 30.0640} {31.4320 30.0640} {31.4320 10.0000}
+alu             alu             collection  bounding_box          {10.0000 10.0000} {31.4320 30.0640}
+alu             alu             string      full_name             alu
+alu             alu             string      name                  alu
+alu             alu             string      object_class          core_area
+1

@@ -1,0 +1,17 @@
+****************************************
+Report : Attribute
+Design : updown_counter
+Version: R-2020.09-SP3
+Date   : Mon May 13 20:19:25 2024
+****************************************
+
+Design          Object          Type        Attribute Name        Value
+--------------------------------------------------------------------------------
+updown_counter  updown_counter  area        area                  352.24358400
+updown_counter  updown_counter  rect        bbox                  {10.0000 10.0000} {29.1520 28.3920}
+updown_counter  updown_counter  coord_list  boundary              {10.0000 10.0000} {10.0000 28.3920} {29.1520 28.3920} {29.1520 10.0000}
+updown_counter  updown_counter  collection  bounding_box          {10.0000 10.0000} {29.1520 28.3920}
+updown_counter  updown_counter  string      full_name             updown_counter
+updown_counter  updown_counter  string      name                  updown_counter
+updown_counter  updown_counter  string      object_class          core_area
+1

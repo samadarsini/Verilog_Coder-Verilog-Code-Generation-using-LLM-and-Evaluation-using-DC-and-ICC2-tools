@@ -1,0 +1,330 @@
+#Run this script using the command: launch_synopsys_dc.sh  -f  dc_custom.tcl  -o  dc_out.log
+#This script can be only used in VLSI 414/641/691 class
+#You must get Prof. Riadul Islam's permission for other use and distribution
+set top_mod "updown_counter"
+updown_counter
+sh mkdir -p asic
+sh mkdir -p asic/${top_mod}/reports
+#Formality output file used for Formal Verification
+set_svf "asic/${top_mod}/${top_mod}.svf";
+1
+#set library paths
+set search_path "$search_path /afs/umbc.edu/software/synopsys/design_kits/synopsys_32_22nm/SAED32_EDK/lib/stdcell_rvt/db_ccs/"
+. /umbc/software/synopsys/syn/R-2020.09-SP3/libraries/syn /umbc/software/synopsys/syn/R-2020.09-SP3/dw/syn_ver /umbc/software/synopsys/syn/R-2020.09-SP3/dw/sim_ver /afs/umbc.edu/software/synopsys/design_kits/synopsys_32_22nm/SAED32_EDK/lib/stdcell_rvt/db_ccs/
+set search_path "$search_path /afs/umbc.edu/software/synopsys/design_kits/synopsys_32_22nm/SAED32_EDK/"
+. /umbc/software/synopsys/syn/R-2020.09-SP3/libraries/syn /umbc/software/synopsys/syn/R-2020.09-SP3/dw/syn_ver /umbc/software/synopsys/syn/R-2020.09-SP3/dw/sim_ver /afs/umbc.edu/software/synopsys/design_kits/synopsys_32_22nm/SAED32_EDK/lib/stdcell_rvt/db_ccs/ /afs/umbc.edu/software/synopsys/design_kits/synopsys_32_22nm/SAED32_EDK/
+set search_path "$search_path /afs/umbc.edu/users/w/d/wd70170/home/final_project/updown_counter/GPT3.5"
+. /umbc/software/synopsys/syn/R-2020.09-SP3/libraries/syn /umbc/software/synopsys/syn/R-2020.09-SP3/dw/syn_ver /umbc/software/synopsys/syn/R-2020.09-SP3/dw/sim_ver /afs/umbc.edu/software/synopsys/design_kits/synopsys_32_22nm/SAED32_EDK/lib/stdcell_rvt/db_ccs/ /afs/umbc.edu/software/synopsys/design_kits/synopsys_32_22nm/SAED32_EDK/ /afs/umbc.edu/users/w/d/wd70170/home/final_project/updown_counter/GPT3.5
+#set search_path "$search_path /data/riaduli/synopsys_setup/verilog_source_files/adder/"
+set rvt_library "/afs/umbc.edu/software/synopsys/design_kits/synopsys_32_22nm/SAED32_EDK/lib/stdcell_rvt/db_ccs/saed32rvt_tt1p05v25c.db"
+/afs/umbc.edu/software/synopsys/design_kits/synopsys_32_22nm/SAED32_EDK/lib/stdcell_rvt/db_ccs/saed32rvt_tt1p05v25c.db
+set link_library "$rvt_library"
+/afs/umbc.edu/software/synopsys/design_kits/synopsys_32_22nm/SAED32_EDK/lib/stdcell_rvt/db_ccs/saed32rvt_tt1p05v25c.db
+set target_library "$rvt_library"
+/afs/umbc.edu/software/synopsys/design_kits/synopsys_32_22nm/SAED32_EDK/lib/stdcell_rvt/db_ccs/saed32rvt_tt1p05v25c.db
+create_mw_lib "asic/${top_mod}/${top_mod}" -technology /afs/umbc.edu/software/synopsys/design_kits/synopsys_32_22nm/SAED32_EDK/tech/milkyway/saed32nm_1p9m_mw.tf  -mw_reference_library { /afs/umbc.edu/software/synopsys/design_kits/synopsys_32_22nm/SAED32_EDK/lib/stdcell_rvt/milkyway/saed32nm_rvt_1p9m }
+Start to load technology file /afs/umbc.edu/software/synopsys/design_kits/synopsys_32_22nm/SAED32_EDK/tech/milkyway/saed32nm_1p9m_mw.tf.
+Warning: Layer 'M1' has a pitch 0.152 that does not match the recommended wire-to-via pitch 0.13 or 0.105. (TFCHK-049)
+Warning: Layer 'M2' has a pitch 0.152 that does not match the recommended wire-to-via pitch 0.139. (TFCHK-049)
+Warning: Layer 'M3' has a pitch 0.304 that does not match the recommended wire-to-via pitch 0.139. (TFCHK-049)
+Warning: Layer 'M4' has a pitch 0.304 that does not match the recommended wire-to-via pitch 0.139. (TFCHK-049)
+Warning: Layer 'M5' has a pitch 0.608 that does not match the recommended wire-to-via pitch 0.139. (TFCHK-049)
+Warning: Layer 'M6' has a pitch 0.608 that does not match the recommended wire-to-via pitch 0.139. (TFCHK-049)
+Warning: Layer 'M7' has a pitch 1.216 that does not match the recommended wire-to-via pitch 0.139. (TFCHK-049)
+Warning: Layer 'M8' has a pitch 1.216 that does not match the recommended wire-to-via pitch 0.179 or 0.164. (TFCHK-049)
+Warning: Layer 'M9' has a pitch 2.432 that does not match the recommended wire-to-via pitch 1.74. (TFCHK-049)
+Warning: Layer 'MRDL' has a pitch 4.864 that does not match the recommended wire-to-via pitch 4.5. (TFCHK-049)
+Warning: Layer 'MRDL' has a pitch 4.864 that does not match the doubled pitch 2.432 or tripled pitch 3.648. (TFCHK-050)
+Warning: CapModel sections are missing. Capacitance models should be loaded with a TLU+ file later. (TFCHK-084)
+Technology file /afs/umbc.edu/software/synopsys/design_kits/synopsys_32_22nm/SAED32_EDK/tech/milkyway/saed32nm_1p9m_mw.tf has been loaded successfully.
+open_mw_lib "asic/${top_mod}/${top_mod}"
+{updown_counter}
+set_host_options -max_cores 10
+1
+define_design_lib work -path asic/${top_mod}/work
+1
+analyze -define {ASIC=1} -f sverilog -library work "${top_mod}.v"
+Running PRESTO HDLC
+Compiling source file ./updown_counter.v
+Presto compilation completed successfully.
+Loading db file '/afs/umbc.edu/software/synopsys/design_kits/synopsys_32_22nm/SAED32_EDK/lib/stdcell_rvt/db_ccs/saed32rvt_tt1p05v25c.db'
+Information: Using CCS timing libraries. (TIM-024)
+1
+elaborate -library work ${top_mod}
+Loading db file '/umbc/software/synopsys/syn/R-2020.09-SP3/libraries/syn/gtech.db'
+Loading db file '/umbc/software/synopsys/syn/R-2020.09-SP3/libraries/syn/standard.sldb'
+  Loading link library 'saed32rvt_tt1p05v25c'
+  Loading link library 'gtech'
+Running PRESTO HDLC
+
+Inferred memory devices in process
+        in routine updown_counter line 8 in file
+                './updown_counter.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      count_reg      | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (updown_counter)
+Elaborated 1 design.
+Current design is now 'updown_counter'.
+1
+create_clock -name clk -period 0.667 clk
+1
+compile_ultra
+Loading db file '/umbc/software/synopsys/syn/R-2020.09-SP3/libraries/syn/dw_foundation.sldb'
+Warning: DesignWare synthetic library dw_foundation.sldb is added to the synthetic_library in the current command. (UISN-40)
+Information: Performing power optimization. (PWR-850)
+Analyzing: "/afs/umbc.edu/software/synopsys/design_kits/synopsys_32_22nm/SAED32_EDK/lib/stdcell_rvt/db_ccs/saed32rvt_tt1p05v25c.db"
+Library analysis succeeded.
+Information: Running optimization using a maximum of 10 cores. (OPT-1500)
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | R-2020.09-DWBB_202009.3 |     *     |
+| Licensed DW Building Blocks        | R-2020.09-DWBB_202009.3 |     *     |
+============================================================================
+
+Information: Sequential output inversion is enabled.  SVF file must be used for formal verification. (OPT-1208)
+
+Information: There are 2 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+  Simplifying Design 'updown_counter'
+
+Loaded alib file './alib-52/saed32rvt_tt1p05v25c.db.alib'
+  Building model 'DW01_NAND2'
+Information: Ungrouping 0 of 1 hierarchies before Pass 1 (OPT-775)
+Information: State dependent leakage is now switched from on to off.
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'updown_counter'
+ Implement Synthetic for 'updown_counter'.
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+Information: The library cell 'PMT3_RVT' in the library 'saed32rvt_tt1p05v25c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'PMT2_RVT' in the library 'saed32rvt_tt1p05v25c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'PMT1_RVT' in the library 'saed32rvt_tt1p05v25c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT3_RVT' in the library 'saed32rvt_tt1p05v25c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT2_RVT' in the library 'saed32rvt_tt1p05v25c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT1_RVT' in the library 'saed32rvt_tt1p05v25c' is not characterized for internal power. (PWR-536)
+Information: The target library(s) contains cell(s), other than black boxes, that are not characterized for internal power. (PWR-24)
+
+Threshold voltage group cell usage:
+>> saed32cell_svt 100.00%
+
+  Beginning Mapping Optimizations  (Ultra High effort)
+  -------------------------------
+  Mapping Optimization (Phase 1)
+Information: Added key list 'DesignWare' to design 'updown_counter'. (DDB-72)
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:01     263.0      0.59       2.7       0.0                           6333289.0000
+    0:00:02     258.5      0.59       2.6       0.0                           6216567.0000
+
+Threshold voltage group cell usage:
+>> saed32cell_svt 100.00%
+
+  Beginning Constant Register Removal
+  -----------------------------------
+    0:00:02     258.5      0.59       2.6       0.0                           6216567.0000
+    0:00:02     258.5      0.59       2.6       0.0                           6216567.0000
+
+Threshold voltage group cell usage:
+>> saed32cell_svt 100.00%
+
+  Beginning Global Optimizations
+  ------------------------------
+  Numerical Synthesis (Phase 1)
+  Numerical Synthesis (Phase 2)
+  Global Optimization (Phase 1)
+  Global Optimization (Phase 2)
+  Global Optimization (Phase 3)
+  Global Optimization (Phase 4)
+  Global Optimization (Phase 5)
+  Global Optimization (Phase 6)
+  Global Optimization (Phase 7)
+  Global Optimization (Phase 8)
+  Global Optimization (Phase 9)
+  Global Optimization (Phase 10)
+  Global Optimization (Phase 11)
+  Global Optimization (Phase 12)
+  Global Optimization (Phase 13)
+  Global Optimization (Phase 14)
+  Global Optimization (Phase 15)
+  Global Optimization (Phase 16)
+  Global Optimization (Phase 17)
+  Global Optimization (Phase 18)
+  Global Optimization (Phase 19)
+  Global Optimization (Phase 20)
+  Global Optimization (Phase 21)
+  Global Optimization (Phase 22)
+  Global Optimization (Phase 23)
+  Global Optimization (Phase 24)
+  Global Optimization (Phase 25)
+  Global Optimization (Phase 26)
+  Global Optimization (Phase 27)
+  Global Optimization (Phase 28)
+  Global Optimization (Phase 29)
+
+Threshold voltage group cell usage:
+>> saed32cell_svt 100.00%
+
+  Beginning Isolate Ports
+  -----------------------
+
+Threshold voltage group cell usage:
+>> saed32cell_svt 100.00%
+
+  Beginning Delay Optimization
+  ----------------------------
+    0:00:02     225.7      1.46      11.7       0.0                           5625003.0000
+    0:00:02     253.4      0.54       2.6       0.0                           5884160.0000
+    0:00:02     253.4      0.54       2.6       0.0                           5884160.0000
+    0:00:02     251.9      0.54       3.0       0.0                           5886397.5000
+
+Threshold voltage group cell usage:
+>> saed32cell_svt 100.00%
+    0:00:02     251.9      0.54       3.0       0.0                           5886397.5000
+    0:00:02     251.9      0.54       3.0       0.0                           5886397.5000
+
+  Beginning WLM Backend Optimization
+  --------------------------------------
+    0:00:02     246.5      0.53       2.6       0.0                           5697920.5000
+    0:00:02     246.3      0.53       2.6       0.0                           5697920.5000
+    0:00:02     246.3      0.53       2.6       0.0                           5697920.5000
+    0:00:02     245.8      0.53       2.6       0.0                           5697920.5000
+    0:00:02     245.8      0.53       2.6       0.0                           5697920.5000
+    0:00:02     279.3      0.48       2.0       0.0                           6684625.5000
+    0:00:02     279.3      0.48       2.0       0.0                           6684625.5000
+    0:00:02     280.1      0.48       1.9       0.0                           6684625.5000
+    0:00:02     280.1      0.48       1.9       0.0                           6684625.5000
+    0:00:02     279.8      0.44       1.9       0.0                           6686601.0000
+    0:00:02     279.8      0.44       1.9       0.0                           6686601.0000
+    0:00:02     299.1      0.28       1.5       0.0                           7386792.5000
+    0:00:02     299.1      0.28       1.5       0.0                           7386792.5000
+    0:00:02     314.6      0.24       1.4       0.0                           7990652.0000
+    0:00:02     314.6      0.24       1.4       0.0                           7990652.0000
+    0:00:02     360.1      0.17       1.1       0.0                           8665653.0000
+    0:00:02     360.1      0.17       1.1       0.0                           8665653.0000
+    0:00:02     360.1      0.17       1.1       0.0                           8665653.0000
+    0:00:02     360.1      0.17       1.1       0.0                           8665653.0000
+    0:00:02     362.4      0.14       1.0       0.0                           8647311.0000
+    0:00:02     362.4      0.14       1.0       0.0                           8647311.0000
+    0:00:02     362.4      0.14       1.0       0.0                           8647311.0000
+    0:00:02     348.2      0.11       0.7       0.0                           8420866.0000
+    0:00:02     348.2      0.11       0.7       0.0                           8420866.0000
+
+Threshold voltage group cell usage:
+>> saed32cell_svt 100.00%
+
+
+  Beginning Leakage Power Optimization  (max_leakage_power 0)
+  ------------------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:02     348.2      0.11       0.7       0.0                           8420866.0000
+  Global Optimization (Phase 30)
+  Global Optimization (Phase 31)
+  Global Optimization (Phase 32)
+  Global Optimization (Phase 33)
+  Global Optimization (Phase 34)
+  Global Optimization (Phase 35)
+  Global Optimization (Phase 36)
+  Global Optimization (Phase 37)
+  Global Optimization (Phase 38)
+  Global Optimization (Phase 39)
+  Global Optimization (Phase 40)
+  Global Optimization (Phase 41)
+  Global Optimization (Phase 42)
+  Global Optimization (Phase 43)
+  Global Optimization (Phase 44)
+    0:00:02     288.2      0.08       0.5       0.0                           7281926.5000
+    0:00:02     288.2      0.08       0.5       0.0                           7281926.5000
+    0:00:02     288.2      0.08       0.5       0.0                           7281926.5000
+    0:00:03     287.2      0.08       0.5       0.0                           7281926.5000
+    0:00:03     287.2      0.08       0.5       0.0                           7281926.5000
+    0:00:03     287.2      0.08       0.5       0.0                           7281926.5000
+    0:00:03     287.2      0.08       0.5       0.0                           7281926.5000
+    0:00:03     287.2      0.08       0.5       0.0                           7281926.5000
+    0:00:03     287.2      0.08       0.5       0.0                           7281926.5000
+    0:00:03     312.3      0.08       0.4       0.0                           7918680.5000
+    0:00:03     312.3      0.08       0.4       0.0                           7918680.5000
+    0:00:03     322.3      0.07       0.4       0.0                           7893421.0000
+    0:00:03     322.3      0.07       0.4       0.0                           7893421.0000
+    0:00:03     323.0      0.06       0.4       0.0                           7919348.5000
+    0:00:03     323.0      0.06       0.4       0.0                           7919348.5000
+    0:00:03     326.1      0.06       0.4       0.0                           7992055.0000
+    0:00:03     326.1      0.06       0.4       0.0                           7992055.0000
+    0:00:03     323.3      0.06       0.3       0.0                           7992884.5000
+    0:00:03     323.3      0.06       0.3       0.0                           7992884.5000
+    0:00:03     325.8      0.05       0.3       0.0                           8065591.5000
+    0:00:03     325.8      0.05       0.3       0.0                           8065591.5000
+    0:00:03     325.8      0.05       0.3       0.0                           8065591.5000
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:03     325.8      0.05       0.3       0.0                           8065591.5000
+    0:00:03     290.5      0.13       0.7       0.0                           7555735.0000
+    0:00:03     292.5      0.09       0.5       0.0                           7493034.5000
+    0:00:03     292.5      0.09       0.5       0.0                           7493034.5000
+    0:00:03     285.9      0.09       0.6       0.0                           7418860.5000
+    0:00:03     285.4      0.09       0.5       0.0                           7418860.5000
+    0:00:03     301.4      0.05       0.4       0.0                           7638305.5000
+    0:00:03     301.4      0.05       0.4       0.0                           7638305.5000
+    0:00:03     301.4      0.05       0.4       0.0                           7638305.5000
+    0:00:03     301.4      0.05       0.4       0.0                           7638305.5000
+    0:00:03     301.4      0.05       0.4       0.0                           7638305.5000
+    0:00:03     301.4      0.05       0.4       0.0                           7638305.5000
+    0:00:03     301.4      0.05       0.4       0.0                           7638305.5000
+    0:00:03     301.4      0.05       0.4       0.0                           7638305.5000
+    0:00:03     299.4      0.05       0.3       0.0                           7675392.5000
+    0:00:03     299.4      0.05       0.3       0.0                           7675392.5000
+    0:00:03     299.1      0.05       0.3       0.0                           7675392.5000
+    0:00:03     297.9      0.05       0.3       0.0                           7675392.5000
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+Information: State dependent leakage is now switched from off to on.
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+1
+uniquify
+1
+write -hierarchy -format verilog -output asic/${top_mod}/${top_mod}_icc.v ${top_mod}
+Writing verilog file '/afs/umbc.edu/users/w/d/wd70170/home/final_project/updown_counter/GPT3.5/asic/updown_counter/updown_counter_icc.v'.
+1
+write_sdc asic/${top_mod}/${top_mod}.sdc
+1
+change_names -rules verilog -hierarchy
+1
+write_sdf -significant_digits 13 asic/${top_mod}/${top_mod}.sdf
+Information: Annotated 'cell' delays are assumed to include load delay. (UID-282)
+Information: Writing timing information to file '/afs/umbc.edu/users/w/d/wd70170/home/final_project/updown_counter/GPT3.5/asic/updown_counter/updown_counter.sdf'. (WT-3)
+Information: Updating design information... (UID-85)
+1
+report_constraint -all_violators > asic/${top_mod}/reports/dc_constraint.txt
+report_area > asic/${top_mod}/reports/dc_area.txt
+quit
+
+Memory usage for this session 329 Mbytes.
+Memory usage for this session including child processes 470 Mbytes.
+CPU usage for this session 47 seconds ( 0.01 hours ).
+Elapsed time for this session 48 seconds ( 0.01 hours ).
+
+Thank you...
+

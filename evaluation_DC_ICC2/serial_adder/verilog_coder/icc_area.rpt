@@ -1,0 +1,17 @@
+****************************************
+Report : Attribute
+Design : serial_adder
+Version: R-2020.09-SP3
+Date   : Mon May 13 23:13:57 2024
+****************************************
+
+Design          Object          Type        Attribute Name        Value
+--------------------------------------------------------------------------------
+serial_adder    serial_adder    area        area                  53.87852800
+serial_adder    serial_adder    rect        bbox                  {10.0000 10.0000} {18.0560 16.6880}
+serial_adder    serial_adder    coord_list  boundary              {10.0000 10.0000} {10.0000 16.6880} {18.0560 16.6880} {18.0560 10.0000}
+serial_adder    serial_adder    collection  bounding_box          {10.0000 10.0000} {18.0560 16.6880}
+serial_adder    serial_adder    string      full_name             serial_adder
+serial_adder    serial_adder    string      name                  serial_adder
+serial_adder    serial_adder    string      object_class          core_area
+1

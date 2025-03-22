@@ -1,0 +1,17 @@
+****************************************
+Report : Attribute
+Design : ring_counter
+Version: R-2020.09-SP3
+Date   : Tue May 14 00:00:02 2024
+****************************************
+
+Design          Object          Type        Attribute Name        Value
+--------------------------------------------------------------------------------
+ring_counter    ring_counter    area        area                  71.16032000
+ring_counter    ring_counter    rect        bbox                  {10.0000 10.0000} {18.5120 18.3600}
+ring_counter    ring_counter    coord_list  boundary              {10.0000 10.0000} {10.0000 18.3600} {18.5120 18.3600} {18.5120 10.0000}
+ring_counter    ring_counter    collection  bounding_box          {10.0000 10.0000} {18.5120 18.3600}
+ring_counter    ring_counter    string      full_name             ring_counter
+ring_counter    ring_counter    string      name                  ring_counter
+ring_counter    ring_counter    string      object_class          core_area
+1

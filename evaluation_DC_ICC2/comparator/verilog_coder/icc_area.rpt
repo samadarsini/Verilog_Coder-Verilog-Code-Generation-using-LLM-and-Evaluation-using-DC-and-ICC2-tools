@@ -1,0 +1,17 @@
+****************************************
+Report : Attribute
+Design : comparator
+Version: R-2020.09-SP3
+Date   : Mon May 13 23:35:57 2024
+****************************************
+
+Design          Object          Type        Attribute Name        Value
+--------------------------------------------------------------------------------
+comparator      comparator      area        area                  165.48723100
+comparator      comparator      rect        bbox                  {10.0000 10.0000} {20.4880 20.0320}
+comparator      comparator      coord_list  boundary              {10.0000 10.0000} {10.0000 20.0320} {20.4880 20.0320} {20.4880 10.0000}
+comparator      comparator      collection  bounding_box          {10.0000 10.0000} {20.4880 20.0320}
+comparator      comparator      string      full_name             comparator
+comparator      comparator      string      name                  comparator
+comparator      comparator      string      object_class          core_area
+1

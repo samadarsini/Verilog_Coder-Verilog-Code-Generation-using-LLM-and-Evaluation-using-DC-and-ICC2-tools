@@ -1,0 +1,17 @@
+****************************************
+Report : Attribute
+Design : decoder2to4
+Version: R-2020.09-SP3
+Date   : Mon May 13 19:49:00 2024
+****************************************
+
+Design          Object          Type        Attribute Name        Value
+--------------------------------------------------------------------------------
+decoder2to4     decoder2to4     area        area                  44.72934400
+decoder2to4     decoder2to4     rect        bbox                  {10.0000 10.0000} {16.6880 16.6880}
+decoder2to4     decoder2to4     coord_list  boundary              {10.0000 10.0000} {10.0000 16.6880} {16.6880 16.6880} {16.6880 10.0000}
+decoder2to4     decoder2to4     collection  bounding_box          {10.0000 10.0000} {16.6880 16.6880}
+decoder2to4     decoder2to4     string      full_name             decoder2to4
+decoder2to4     decoder2to4     string      name                  decoder2to4
+decoder2to4     decoder2to4     string      object_class          core_area
+1

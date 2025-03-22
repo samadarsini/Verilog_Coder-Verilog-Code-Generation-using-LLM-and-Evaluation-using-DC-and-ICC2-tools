@@ -1,0 +1,17 @@
+****************************************
+Report : Attribute
+Design : half_adder
+Version: R-2020.09-SP3
+Date   : Mon May 13 19:11:59 2024
+****************************************
+
+Design          Object          Type        Attribute Name        Value
+--------------------------------------------------------------------------------
+half_adder      half_adder      area        area                  30.49728000
+half_adder      half_adder      rect        bbox                  {10.0000 10.0000} {16.0800 15.0160}
+half_adder      half_adder      coord_list  boundary              {10.0000 10.0000} {10.0000 15.0160} {16.0800 15.0160} {16.0800 10.0000}
+half_adder      half_adder      collection  bounding_box          {10.0000 10.0000} {16.0800 15.0160}
+half_adder      half_adder      string      full_name             half_adder
+half_adder      half_adder      string      name                  half_adder
+half_adder      half_adder      string      object_class          core_area
+1
