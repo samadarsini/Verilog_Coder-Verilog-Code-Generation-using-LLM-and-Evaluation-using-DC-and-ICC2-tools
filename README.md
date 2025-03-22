@@ -14,7 +14,7 @@ The instruction and reference code dataset is sourced from the "Resyn-27k.json" 
 
 To execute this script, run the following command in the terminal, specifying the data path and model path. The data path refers to the attached dataset, and the model path is the pre-trained model used as a foundation for training Verilog_Coder. In this case, we used "ishorn5/RTLCoder-Deepseek-v1.1". Specify the desired output path as well.
 
-<pre>```
+<pre>
 torchrun --nproc_per_node=4 training.py \
     --model_name_or_path <model_path> \
     --data_path <data_path> \
@@ -35,29 +35,29 @@ torchrun --nproc_per_node=4 training.py \
     --gradient_checkpointing True \
     --deepspeed ds_stage_2.json \
     --model_max_length 2048
-```</pre>
+</pre>
 ## 4. Testing Verilog_Coder on Verilog-eval
 First, clone the verilog-eval benchmark using the following command:
 
-'''git clone https://github.com/NVlabs/verilog-eval.git'''
+<pre>git clone https://github.com/NVlabs/verilog-eval.git</pre>
 
 After cloning, run the following script to evaluate the model on the evalmachine benchmark:
 
-'''python verilogeval_testing.py --model <your_model_path> --n 20 --temperature=0.2 --gpu_name 0 --output_dir <your_result_directory> --output_file <your_result_file> --bench_type Machine'''
+<pre>python verilogeval_testing.py --model <your_model_path> --n 20 --temperature=0.2 --gpu_name 0 --output_dir <your_result_directory> --output_file <your_result_file> --bench_type Machine</pre>
 Replace <your_model_path>, <your_result_directory>, and <your_result_file> with your specific paths and filenames. The output file for this benchmark is provided as rtlcoder_temp0.2_evalmachine.json.
 
 ## 5. Testing on RTLLM
 Next, clone the RTLLM benchmark using the following command:
 
-'''git clone https://github.com/hkust-zhiyao/RTLLM.git'''
+<pre>git clone https://github.com/hkust-zhiyao/RTLLM.git</pre>
 After cloning, run the following script to perform inference with the model:
 
-'''python rtllm_testing.py --model <your_model_path> --n 5 --temperature=0.5 --gpu_name 0 --output_dir <your_result_directory>'''
+<pre>python rtllm_testing.py --model <your_model_path> --n 5 --temperature=0.5 --gpu_name 0 --output_dir <your_result_directory></pre>
 As before, specify the appropriate paths. The RTL code files generated for the descriptions in rtllm-1.1.json are included in the attached zip file under the "rtllm_generated_codes" folder.
 
 To experiment with different prompts for generating various Verilog codes, you can use the following Python snippet:
 
-'''from ctransformers import AutoModelForCausalLM
+<pre>from ctransformers import AutoModelForCausalLM
 model_path = <model_path>
 llm = AutoModelForCausalLM.from_pretrained(
     model_path,
@@ -69,7 +69,7 @@ llm = AutoModelForCausalLM.from_pretrained(
     top_p=0.95,
 )
 prompt = "Please act as a professional Verilog designer and provide a half_adder including clock."
-print(llm(prompt))'''
+print(llm(prompt))</pre>
 
 ## 6. Evaluation using DC and ICC2 Tools
 By providing different prompts to the model, we generated Verilog codes using GPT-3.5, GPT-4, and Verilog_Coder. These files were synthesized using DC and ICC2 tools to assess area and power metrics. All synthesized files are organized into separate folders within the "evaluation_DC_ICC2" directory in the attached zip file. The TCL files for DC and ICC2 synthesis are also included in this folder. Modify these TCL files as needed, adjusting paths and clock periods.
