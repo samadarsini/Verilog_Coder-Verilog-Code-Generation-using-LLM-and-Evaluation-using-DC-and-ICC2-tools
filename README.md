@@ -2,7 +2,7 @@
 ## 1. Overview
 This project implements Verilog_Coder, a Large Language Model (LLM) designed to generate Verilog code from natural language descriptions. In addition to Verilog_Coder, we utilized GPT-3.5 and GPT-4 to generate alternative code versions for the same instructions. These codes were evaluated based on area and power metrics using Synopsys Design Compiler (DC) and IC Compiler II (ICC2) tools. Verilog_Coder was benchmarked against the Verilog_eval machine part and RTLLM V1.1. We also selected certain generated codes from RTLLM V1.1, developed corresponding testbenches, simulated them, and observed their functionality.
 
-Note: This project was inspired by and utilizes the RTL-Coder model, an open-source LLM solution for RTL code generation. More details can be found in the RTL-Coder GitHub repository. [Link Text](https://github.com/hkust-zhiyao/RTL-Coder)
+Note: This project was inspired by and utilizes the RTL-Coder model, an open-source LLM solution for RTL code generation. More details can be found in the RTL-Coder GitHub repository. [RTL-Coder](https://github.com/hkust-zhiyao/RTL-Coder)
 
 
 ## 2. Workflow Overview
@@ -79,5 +79,6 @@ By providing different prompts to the model, we generated Verilog codes using GP
 We selected certain codes generated from the RTLLM benchmark, developed corresponding testbenches, and simulated these designs using the Synopsys VCS simulator available on the open-source EDA Playground platform. The resulting waveforms were analyzed to observe functionality. All designs, testbenches, and waveforms are included in the "evaluation_VCS" folder.
 
 ## References:
-RTL-Coder: A new LLM solution for RTL code generation, achieving state-of-the-art performance in non-commercial solutions and outperforming GPT-3.5. GitHub Repository
+RTL-Coder: A new LLM solution for RTL code generation, achieving state-of-the-art performance in non-commercial solutions and outperforming GPT-3.5. [RTL-Coder](https://github.com/hkust-zhiyao/RTL-Coder)
+
 
