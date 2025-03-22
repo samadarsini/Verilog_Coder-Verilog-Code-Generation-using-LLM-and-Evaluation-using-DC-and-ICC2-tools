@@ -13,30 +13,8 @@ Important: Ensure that the installed version of PyTorch matches the installed CU
 The instruction and reference code dataset is sourced from the "Resyn-27k.json" file included in the provided zip file. Begin by installing all libraries listed in the requirements.txt file. The training process is managed by the training.py script.
 
 To execute this script, run the following command in the terminal, specifying the data path and model path. The data path refers to the attached dataset, and the model path is the pre-trained model used as a foundation for training Verilog_Coder. In this case, we used "ishorn5/RTLCoder-Deepseek-v1.1". Specify the desired output path as well.
-function test() {
-  console.log("torchrun --nproc_per_node=4 training.py \
-    --model_name_or_path <model_path> \
-    --data_path <data_path> \
-    --fp16 True \
-    --output_dir <output_path> \
-    --num_train_epochs 3 \
-    --per_device_train_batch_size 1 \
-    --per_device_eval_batch_size 2 \
-    --gradient_accumulation_steps 64 \
-    --evaluation_strategy "no" \
-    --save_strategy "steps" \
-    --save_steps 50 \
-    --save_total_limit 10 \
-    --learning_rate 1e-5 \
-    --weight_decay 0. \
-    --logging_steps 1 \
-    --tf32 False \
-    --gradient_checkpointing True \
-    --deepspeed ds_stage_2.json \
-    --model_max_length 2048");
-}
 
-'''
+<pre>'''
 torchrun --nproc_per_node=4 training.py \
     --model_name_or_path <model_path> \
     --data_path <data_path> \
@@ -57,7 +35,7 @@ torchrun --nproc_per_node=4 training.py \
     --gradient_checkpointing True \
     --deepspeed ds_stage_2.json \
     --model_max_length 2048
-'''
+'''</pre>
 ## 4. Testing Verilog_Coder on Verilog-eval
 First, clone the verilog-eval benchmark using the following command:
 
