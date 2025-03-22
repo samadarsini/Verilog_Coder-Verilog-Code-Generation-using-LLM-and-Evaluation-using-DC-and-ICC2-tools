@@ -2,17 +2,40 @@
 ## 1. Overview
 This project implements Verilog_Coder, a Large Language Model (LLM) designed to generate Verilog code from natural language descriptions. In addition to Verilog_Coder, we utilized GPT-3.5 and GPT-4 to generate alternative code versions for the same instructions. These codes were evaluated based on area and power metrics using Synopsys Design Compiler (DC) and IC Compiler II (ICC2) tools. Verilog_Coder was benchmarked against the Verilog_eval machine part and RTLLM V1.1. We also selected certain generated codes from RTLLM V1.1, developed corresponding testbenches, simulated them, and observed their functionality.
 
-## Note: This project was inspired by and utilizes the RTL-Coder model, an open-source LLM solution for RTL code generation. More details can be found in the RTL-Coder GitHub repository.
+Note: This project was inspired by and utilizes the RTL-Coder model, an open-source LLM solution for RTL code generation. More details can be found in the RTL-Coder GitHub repository.
 
 ## 2. Workflow Overview
 The project was conducted on the Google Colab Pro platform with GPU support, as running it on local systems with only a CPU is impractical. A system with a compatible graphics card and the latest version of CUDA installed is required.
 
-## Important: Ensure that the installed version of PyTorch matches the installed CUDA version.
+Important: Ensure that the installed version of PyTorch matches the installed CUDA version.
 
 ## 3. Training
 The instruction and reference code dataset is sourced from the "Resyn-27k.json" file included in the provided zip file. Begin by installing all libraries listed in the requirements.txt file. The training process is managed by the training.py script.
 
 To execute this script, run the following command in the terminal, specifying the data path and model path. The data path refers to the attached dataset, and the model path is the pre-trained model used as a foundation for training Verilog_Coder. In this case, we used "ishorn5/RTLCoder-Deepseek-v1.1". Specify the desired output path as well.
+function test() {
+  console.log("torchrun --nproc_per_node=4 training.py \
+    --model_name_or_path <model_path> \
+    --data_path <data_path> \
+    --fp16 True \
+    --output_dir <output_path> \
+    --num_train_epochs 3 \
+    --per_device_train_batch_size 1 \
+    --per_device_eval_batch_size 2 \
+    --gradient_accumulation_steps 64 \
+    --evaluation_strategy "no" \
+    --save_strategy "steps" \
+    --save_steps 50 \
+    --save_total_limit 10 \
+    --learning_rate 1e-5 \
+    --weight_decay 0. \
+    --logging_steps 1 \
+    --tf32 False \
+    --gradient_checkpointing True \
+    --deepspeed ds_stage_2.json \
+    --model_max_length 2048");
+}
+
 '''
 torchrun --nproc_per_node=4 training.py \
     --model_name_or_path <model_path> \
