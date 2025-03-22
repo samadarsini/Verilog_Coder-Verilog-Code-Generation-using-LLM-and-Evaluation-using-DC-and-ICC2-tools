@@ -14,7 +14,7 @@ The instruction and reference code dataset is sourced from the "Resyn-27k.json" 
 
 To execute this script, run the following command in the terminal, specifying the data path and model path. The data path refers to the attached dataset, and the model path is the pre-trained model used as a foundation for training Verilog_Coder. In this case, we used "ishorn5/RTLCoder-Deepseek-v1.1". Specify the desired output path as well.
 
-<pre>'''
+<pre>```
 torchrun --nproc_per_node=4 training.py \
     --model_name_or_path <model_path> \
     --data_path <data_path> \
@@ -35,7 +35,7 @@ torchrun --nproc_per_node=4 training.py \
     --gradient_checkpointing True \
     --deepspeed ds_stage_2.json \
     --model_max_length 2048
-'''</pre>
+```</pre>
 ## 4. Testing Verilog_Coder on Verilog-eval
 First, clone the verilog-eval benchmark using the following command:
 
