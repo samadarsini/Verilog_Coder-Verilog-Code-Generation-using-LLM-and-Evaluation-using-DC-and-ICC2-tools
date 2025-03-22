@@ -79,6 +79,6 @@ By providing different prompts to the model, we generated Verilog codes using GP
 We selected certain codes generated from the RTLLM benchmark, developed corresponding testbenches, and simulated these designs using the Synopsys VCS simulator available on the open-source EDA Playground platform. The resulting waveforms were analyzed to observe functionality. All designs, testbenches, and waveforms are included in the "evaluation_VCS" folder.
 
 ## References:
-RTL-Coder: A new LLM solution for RTL code generation, achieving state-of-the-art performance in non-commercial solutions and outperforming GPT-3.5. [RTL-Coder](https://github.com/hkust-zhiyao/RTL-Coder)
+RTL-Coder: A new LLM solution for RTL code generation, achieving state-of-the-art performance in non-commercial solutions and outperforming GPT-3.5. More details can be found in the RTL-Coder GitHub repository. [RTL-Coder](https://github.com/hkust-zhiyao/RTL-Coder)
 
 
